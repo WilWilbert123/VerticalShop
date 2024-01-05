@@ -5,7 +5,7 @@ import { useTheme } from '../components/ThemeContext';
 import HomeScreen from "../screens/HomeScreen";
 import DetailsScreen from "../screens/DetailsScreen";
 import CreateAccount from "../screens/CreateAccount"
-
+import SavedItemsScreen from "../screens/SavedItemsScreen";
 const Stack = createNativeStackNavigator();
 
 const HomeStackNavigator = () => {
@@ -19,7 +19,7 @@ const HomeStackNavigator = () => {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
       <Stack.Screen name="CreateAccount" component={CreateAccount} />
-      
+      <Stack.Screen name="SavedItemsScreen" component={SavedItemsScreen} />
     </Stack.Navigator>
   );
 };

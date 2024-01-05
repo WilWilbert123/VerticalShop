@@ -16,6 +16,7 @@ const ThemeToggle = () => {
     pan.setValue({ x: 0, y: screenHeight / 2 - 12 });
     pan.x.setValue(0); // Ensure the toggle stays within the screen bounds
     pan.y.setValue(Math.min(Math.max(0, screenHeight / 2 - 12), screenHeight - 24));
+    
   }, [screenHeight, pan]);
 
   const panResponder = PanResponder.create({
@@ -26,7 +27,7 @@ const ThemeToggle = () => {
     },
     onPanResponderMove: (_, gestureState) => {
       const { moveX, moveY } = gestureState;
-
+      console.log('Toggle Position:', { x: pan.x._value, y: pan.y._value });
       // Update the position of the component to the touch coordinates
       pan.setValue({ x: moveX - 12, y: moveY - 12 }); // 12 is half of the toggle's width/height
 
@@ -39,9 +40,12 @@ const ThemeToggle = () => {
       if (Math.abs(gestureState.dx) <= tapThreshold && Math.abs(gestureState.dy) <= tapThreshold) {
         // It's a tap, trigger onPress behavior
         toggleTheme();
+        
       } else {
         // It's a drag, do nothing on release
+        
       }
+     
     },
   });
 
