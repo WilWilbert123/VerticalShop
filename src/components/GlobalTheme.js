@@ -15,7 +15,7 @@ const GlobalTheme = (isDarkMode) => {
     blue: '#0000ff',
     indigo: '#4b0082',
     violet: '#9400d3',
-  
+
   };
 
   return StyleSheet.create({
@@ -310,12 +310,12 @@ const GlobalTheme = (isDarkMode) => {
       backgroundColor: isDarkMode ? colors.darkGray : colors.black,
       height: 70,
       borderBottomWidth: 1,
-      borderColor: isDarkMode ? colors.white :  colors.white,
+      borderColor: isDarkMode ? colors.white : colors.white,
     },
     headerTitleStyle: {
       flex: 1,
-      color: isDarkMode ? colors.red :  colors.white,
-      
+      color: isDarkMode ? colors.red : colors.white,
+
     },
     ItemsContainer: {
       marginBottom: 330,
@@ -327,7 +327,7 @@ const GlobalTheme = (isDarkMode) => {
 
     noSavedItemsText: {
       fontSize: 18,
-      color: isDarkMode ? colors.black :  colors.red,
+      color: isDarkMode ? colors.black : colors.red,
       textAlign: 'center',
     },
     bottomButtonsContainer: {
@@ -348,7 +348,7 @@ const GlobalTheme = (isDarkMode) => {
       color: 'white',
       fontWeight: 'bold',
     },
-    backGroundSaveItems:{
+    backGroundSaveItems: {
       backgroundColor: isDarkMode ? colors.darkGray : colors.yellow,
     },
     modalContainer: {
@@ -370,27 +370,72 @@ const GlobalTheme = (isDarkMode) => {
     modalButtonsContainer: {
       flexDirection: 'row',
       justifyContent: 'space-around',
-      alignItems:"center",
-    
+      alignItems: "center",
+
     },
     modalButton: {
       padding: 10,
       borderRadius: 5,
       backgroundColor: '#007BFF',
-      width:100,
-      height:40,
+      width: 100,
+      height: 40,
     },
     modalButtonText: {
       color: 'white',
       fontWeight: 'bold',
-      textAlign:"center",
+      textAlign: "center",
     },
-    noItemsText:{
+    noItemsText: {
+      marginTop: 10,
+      textAlign: "center",
+      fontSize: 20,
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+
+    modalContent: {
+      padding: 20,
+      backgroundColor: isDarkMode ? '#303030' : '#fff',
+      borderRadius: 10,
+      alignItems: "center",
+    },
+
+    modalText: {
+      fontSize: 18,
+      marginBottom: 10,
+
+    },
+    modalImage: {
+      width: 100,
+      height: 100,
+      marginBottom: 8,
+    },
+
+    OkButtonContainer: {
+      borderWidth: 1,
+      borderColor: "black",
+      width: 50,
+      height: 30,
+      borderRadius: 10,
       marginTop:10,
-      textAlign:"center",
-      fontSize:20,
     },
-    
+    okButton: {
+      marginTop: 4,
+      textAlign: "center",
+
+    },
+    modalText:{
+      justifyContent:"center",
+      alignItems:"center",
+    },
+    rating: {
+      // Style for the Rating component
+      marginTop: 5,
+    },
   });
 };
 

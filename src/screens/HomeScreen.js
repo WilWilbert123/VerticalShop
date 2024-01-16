@@ -6,6 +6,7 @@ import GlobalTheme from '../components/GlobalTheme';
 import { useTheme } from '../components/ThemeContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DataComponent from '../data/DataComponent';
+import { Rating } from 'react-native-ratings';
 
 const HomeScreen = ({ navigation }) => {
   const { isDarkMode } = useTheme();
@@ -287,8 +288,21 @@ const HomeScreen = ({ navigation }) => {
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
+    setModalContent(
+      <View style={styles.modalContent}>
+        <Image source={{ uri: item.image }} style={styles.modalImage} />
+        <Text style={styles.modalText}>{item.about}</Text>
+        <TouchableOpacity onPress={() => setModalVisible(false)}>
+          <View style={styles.OkButtonContainer}>
+          <Text style={styles.okButton}>OK</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+
     setModalVisible(true);
   };
+  
 
   const handleAccountTabItemClick = (tab) => {
     // Set the appropriate content for the modal based on the selected tab
@@ -337,6 +351,12 @@ const HomeScreen = ({ navigation }) => {
         {/* Use the Image component to display the image */}
         <Image source={{ uri: item.image }} style={styles.itemImage} />
         <Text style={styles.gridItemText}>{item.name}</Text>
+        <Rating
+  startingValue={4.5}
+  imageSize={20}
+  readonly={true}
+  style={styles.rating}
+/>
         <Text style={styles.gridItemPrice}>${item.price.toFixed(2)}</Text>
       </TouchableOpacity>
       <View style={styles.addToCartContainer}>
@@ -573,29 +593,39 @@ const HomeScreen = ({ navigation }) => {
 
 
         <Tab.Screen name="Account"
-          options={{
-            headerStyle: styles.headerStyle,
-            headerTitleStyle: styles.headerTitleStyle,
-          }}
-        >
-          {() => (
-            <View style={styles.accountTabContainer}>
-              <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Profile')}>
-                <Text style={styles.accountTabItemText}>Profile</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Number')}>
-                <Text style={styles.accountTabItemText}>Number</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Email')}>
-                <Text style={styles.accountTabItemText}>Email</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Balance')}>
-                <Text style={styles.accountTabItemText}>Balance</Text>
-              </TouchableOpacity>
-              {/* Add more touchable items as needed */}
-            </View>
-          )}
-        </Tab.Screen>
+  options={{
+    headerStyle: styles.headerStyle,
+    headerTitleStyle: styles.headerTitleStyle,
+  }}
+>
+  {() => (
+    <View style={styles.accountTabContainer}>
+      <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Profile')}>
+        <Text style={styles.accountTabItemText}>Profile</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Number')}>
+        <Text style={styles.accountTabItemText}>Number</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Email')}>
+        <Text style={styles.accountTabItemText}>Email</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Balance')}>
+        <Text style={styles.accountTabItemText}>Balance</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Settings')}>
+        <Text style={styles.accountTabItemText}>Settings</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Security')}>
+        <Text style={styles.accountTabItemText}>Security</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.accountTabItem} onPress={() => handleAccountTabItemClick('Notifications')}>
+        <Text style={styles.accountTabItemText}>Notifications</Text>
+      </TouchableOpacity>
+      {/* Add more touchable items for additional features as needed */}
+    </View>
+  )}
+</Tab.Screen>
+
       </Tab.Navigator>
 
       {/* Render content based on selected tab */}

@@ -27,7 +27,7 @@ const ThemeToggle = () => {
     },
     onPanResponderMove: (_, gestureState) => {
       const { moveX, moveY } = gestureState;
-      console.log('Toggle Position:', { x: pan.x._value, y: pan.y._value });
+      // console.log('Toggle Position:', { x: pan.x._value, y: pan.y._value });
       // Update the position of the component to the touch coordinates
       pan.setValue({ x: moveX - 12, y: moveY - 12 }); // 12 is half of the toggle's width/height
 
