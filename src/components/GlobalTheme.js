@@ -436,6 +436,7 @@ const GlobalTheme = (isDarkMode) => {
       // Style for the Rating component
       marginTop: 5,
     },
+  
   });
 };
 
