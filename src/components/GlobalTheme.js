@@ -15,7 +15,7 @@ const GlobalTheme = (isDarkMode) => {
     blue: '#0000ff',
     indigo: '#4b0082',
     violet: '#9400d3',
-
+    lightblue: '#3498db',
   };
 
   return StyleSheet.create({
@@ -436,7 +436,49 @@ const GlobalTheme = (isDarkMode) => {
       // Style for the Rating component
       marginTop: 5,
     },
-  
+   container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlayContainer: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 20,
+    borderRadius: 10,
+  },
+  textInput: {
+    height: 40,
+    borderColor: isDarkMode ? colors.black : colors.white,
+    borderWidth: 1,
+    margin: 10,
+    padding: 8,
+    color:  isDarkMode ? colors.black : colors.white,
+  },
+  button: {
+    backgroundColor: isDarkMode ? colors.black : colors.lightblue,
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    width: 250,
+  },
+  buttonText: {
+    color: isDarkMode ? colors.white : colors.white,
+    textAlign: 'center',
+  },
+  linkText: {
+    color: isDarkMode ? colors.gray : colors.white,
+    marginTop: 10,
+    textDecorationLine: 'underline',
+  },
+  LoginText:{
+    fontSize:30,
+    color:isDarkMode ? colors.black : colors.white,
+  },
   });
 };
 

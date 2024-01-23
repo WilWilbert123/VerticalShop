@@ -25,8 +25,8 @@ const CreateAccount = ({navigation}) => {
       source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQHKYV5FbRc1wFLAYHarpvncKnJYNIQ1y4oA&usqp=CAU' }}
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
-      <View style={{ backgroundColor: 'rgba(0,0,0,0.5)', padding: 100, borderRadius: 10,height:700,marginTop:60 }}>
-       <View style={{alignItems:"center"}}>
+      <View style={{flex:1, backgroundColor: 'rgba(0,0,0,0.5)', padding: 100, borderRadius: 10}}>
+       <View style={{alignItems:"center",marginTop:50}}>
         <Text style={{color:"white",fontSize:30}}>Create Account</Text>
         </View>
         <TextInput

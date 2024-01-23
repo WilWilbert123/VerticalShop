@@ -1,51 +1,60 @@
-// LoginScreen.js
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { useTheme } from '../components/ThemeContext';
+import GlobalTheme from '../components/GlobalTheme';
 
 const LoginScreen = ({ navigation }) => {
+    const { isDarkMode } = useTheme();
     const { backgroundColor, textColor } = useTheme();
+    const styles = GlobalTheme(isDarkMode);
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        // Implement your login logic here
-        // For simplicity, let's navigate to the HomeScreen on successful login
         navigation.navigate('HomeScreen');
     };
+
+    const isLoginButtonDisabled = username === '' || password === '';
 
     return (
         <ImageBackground
             source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQHKYV5FbRc1wFLAYHarpvncKnJYNIQ1y4oA&usqp=CAU' }}
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+            style={styles.imageBackground}
         >
-            <View style={{ backgroundColor: 'rgba(0,0,0,0.5)', padding: 100, borderRadius: 10 }}>
+            <View style={styles.overlayContainer}>
                 <View style={{ alignItems: "center" }}>
-                    <Text style={{ fontSize: 24, color: 'white', marginBottom: 20 }}>Login</Text>
+                    <Text style={styles.LoginText}>Login</Text>
                 </View>
                 <TextInput
-                    style={{ height: 40, borderColor: 'white', borderWidth: 1, margin: 10, padding: 8, color: 'white' }}
+                    style={styles.textInput}
                     placeholder="Username"
-                    placeholderTextColor="white"
+                    placeholderTextColor={isDarkMode ? "black" : "white"}
+                    value={username}
+                    onChangeText={setUsername}
                 />
                 <TextInput
-                    style={{ height: 40, width: 250, borderColor: 'white', borderWidth: 1, margin: 10, padding: 8, color: 'white' }}
+                    style={{ ...styles.textInput, width: 250 }}
                     placeholder="Password"
-                    placeholderTextColor="white"
+                    placeholderTextColor={isDarkMode ? "black" : "white"}
                     secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
                 />
+
                 <View style={{ alignItems: "center" }}>
                     <TouchableOpacity
-                        style={{ backgroundColor: '#3498db', padding: 10, borderRadius: 5, marginTop: 10, width: 250 }}
+                        style={[styles.button, { opacity: isLoginButtonDisabled ? 0.5 : 1 }]}
                         onPress={handleLogin}
+                        disabled={isLoginButtonDisabled}
                     >
-
-                        <Text style={{ color: 'white', textAlign: 'center' }}>Login</Text>
+                        <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
                     <View style={{ alignItems: 'center', padding: 20 }}>
                         <TouchableOpacity onPress={() => navigation.replace('CreateAccount')}>
-                            <Text style={{ color: 'white', marginTop: 10, textDecorationLine: 'underline' }}>Create an account</Text>
+                            <Text style={styles.linkText}>Create an account</Text>
                         </TouchableOpacity>
                     </View>
-
                 </View>
             </View>
         </ImageBackground>
